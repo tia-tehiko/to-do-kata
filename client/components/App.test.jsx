@@ -1,11 +1,12 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { Provider } from 'react-redux'
 
 import App from './App'
 import store from '../store'
 
 jest.spyOn(store, 'getState')
+jest.spyOn(store, 'dispatch')
 
 beforeEach(() => {
   store.getState.mockImplementation(() => ({
@@ -23,4 +24,11 @@ test('displays a task list', () => {
   const tasks = screen.getAllByRole('listitem')
   expect(tasks).toHaveLength(3)
   expect(tasks[0].innerHTML).toMatch(/portfolio/)
+})
+
+test('get tasks from api when component mounts', () => {
+  render(<Provider store={store}><App /></Provider>)
+  waitFor(() => store.dispatch.mock.calls.length === 1)
+  expect(store.dispatch).toHaveBeenCalled()
+  expect(store.dispatch.mock.calls[0][0].type).toBe('SET_TASKS')
 })
