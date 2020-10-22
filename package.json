@@ -28,11 +28,7 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
-  "jest": {
-    "setupFiles": [
-      "./tests/setup.js"
-    ]
-  },
+  "jest": {},
   "dependencies": {
     "express": "^4.17.1",
     "knex": "^0.21.6",
