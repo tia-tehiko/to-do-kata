@@ -1,4 +1,4 @@
-export function fetchTasks() {
+export function fetchTasks () {
   const tasks = [
     { id: 1, name: 'update portfolio' },
     { id: 2, name: 'do washing' },
