@@ -2,8 +2,8 @@ import React from 'react'
 
 const tasks = [
   { id: 1, name: 'update portfolio' },
-  { id: 2, name: 'apply for jobs' },
-  { id: 3, name: 'get new car' }
+  { id: 2, name: 'do washing' },
+  { id: 3, name: 'ring mum' }
 ]
 
 const App = () => {
