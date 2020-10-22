@@ -1,21 +1,36 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchTasks } from '../api'
+import { setTasks } from '../actions'
 
-const tasks = [
-  { id: 1, name: 'update portfolio' },
-  { id: 2, name: 'apply for jobs' },
-  { id: 3, name: 'get new car' }
-]
+class App extends React.Component {
+  componentDidMount () {
+    fetchTasks()
+      .then(tasks => {
+        return this.props.dispatch(setTasks(tasks))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
-const App = () => {
-  return (
-    <>
-      <h1>Tasks</h1>
-      <ul>
-        {tasks.map(task => <li key={task.id}>{task.name}</li>)}
-      </ul>
-
-    </>
-  )
+  render () {
+    const { tasks } = this.props
+    return (
+      <>
+        <h1>Tasks</h1>
+        <ul>
+          {tasks.map(task => <li key={task.id}>{task.name}</li>)}
+        </ul>
+      </>
+    )
+  }
 }
 
-export default App
+function mapStateToProps (state) {
+  return {
+    tasks: state.tasks
+  }
+}
+
+export default connect(mapStateToProps)(App)
