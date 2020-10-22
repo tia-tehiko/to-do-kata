@@ -1,9 +1,11 @@
-const initialState = [
-  { id: 1, name: 'update portfolio' },
-  { id: 2, name: 'do washing' },
-  { id: 3, name: 'ring mum' }
-]
+import { SET_TASKS } from '../actions'
 
-export default function tasksReducer(state = initialState, action) {
-  return state
+export default function tasksReducer (state = [], action) {
+  switch (action.type) {
+    case SET_TASKS:
+      return action.tasks
+
+    default:
+      return state
+  }
 }
