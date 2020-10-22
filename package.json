@@ -14,7 +14,8 @@
     "start": "run-s build server",
     "build": "webpack",
     "server": "node server",
-    "test": "jest --watchAll",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "lint": "npx eslint . --ext .js,.jsx",
     "lint:fix": "npx eslint . --ext .js,.jsx --fix"
   },
@@ -28,11 +29,7 @@
       "@babel/plugin-proposal-object-rest-spread"
     ]
   },
-  "jest": {
-    "setupFiles": [
-      "./tests/setup.js"
-    ]
-  },
+  "jest": {},
   "dependencies": {
     "express": "^4.17.1",
     "knex": "^0.21.6",
