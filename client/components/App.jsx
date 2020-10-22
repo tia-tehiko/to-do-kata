@@ -1,9 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { fetchTasks } from '../api'
+import { setTasks } from '../actions'
 
-export class App extends React.Component {
-  render() {
-    let { tasks } = this.props
+class App extends React.Component {
+  componentDidMount () {
+    fetchTasks()
+      .then(tasks => {
+        return this.props.dispatch(setTasks(tasks))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  render () {
+    const { tasks } = this.props
     return (
       <>
         <h1>Tasks</h1>
@@ -15,7 +27,7 @@ export class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     tasks: state.tasks
   }
