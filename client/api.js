@@ -1,8 +1,7 @@
+import request from 'superagent'
+
 export function fetchTasks () {
-  const tasks = [
-    { id: 1, name: 'update portfolio' },
-    { id: 2, name: 'do washing' },
-    { id: 3, name: 'ring mum' }
-  ]
-  return Promise.resolve(tasks)
+  return request
+    .get('/api/v1/tasks')
+    .then(res => res.body)
 }
