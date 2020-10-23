@@ -1,36 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { fetchTasks } from '../api'
-import { setTasks } from '../actions'
+import Tasks from './Tasks'
 
 class App extends React.Component {
-  componentDidMount () {
-    fetchTasks()
-      .then(tasks => {
-        return this.props.dispatch(setTasks(tasks))
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
   render () {
-    const { tasks } = this.props
     return (
       <>
-        <h1>Tasks</h1>
-        <ul>
-          {tasks.map(task => <li key={task.id}>{task.name}</li>)}
-        </ul>
+        <Tasks />
       </>
     )
   }
 }
 
-function mapStateToProps (state) {
-  return {
-    tasks: state.tasks
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App
