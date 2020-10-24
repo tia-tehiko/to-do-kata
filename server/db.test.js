@@ -22,7 +22,7 @@ test('save task', () => {
       return getTasks(db)
     })
     .then(tasks => {
-      expect(tasks.length).toBe(4)
+      expect(tasks).toHaveLength(4)
       expect(tasks[3].name).toBe('new task')
       return null
     })

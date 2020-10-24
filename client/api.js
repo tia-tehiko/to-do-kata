@@ -10,4 +10,5 @@ export function addTask (taskName) {
   return request
     .post('/api/v1/tasks')
     .send({ taskName })
+    .then(res => res.body.id)
 }

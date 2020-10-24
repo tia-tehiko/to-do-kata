@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import { addTask } from '../api'
 
@@ -18,7 +17,7 @@ class AddTask extends React.Component {
     addTask(this.state.name)
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h1>Add New Task</h1>

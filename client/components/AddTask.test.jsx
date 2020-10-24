@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import AddTask from './AddTask'
 import { addTask } from '../api'
@@ -13,7 +13,7 @@ test('render add task form', () => {
   const input = screen.getByRole('textbox')
   fireEvent.change(input, { target: { name: 'name', value: 'new task' } })
 
-  let submit = screen.getByRole('button')
+  const submit = screen.getByRole('button')
   fireEvent.click(submit)
 
   expect(addTask).toHaveBeenCalled()
