@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import { addTask } from '../api'
+import { addTask, fetchTasks } from '../api'
+import { setTasks } from '../actions'
 
 class AddTask extends React.Component {
   state = {
@@ -15,17 +17,27 @@ class AddTask extends React.Component {
 
   submit = () => {
     addTask(this.state.name)
+      .then(() => {
+        return fetchTasks()
+      })
+      .then((tasks) => {
+        this.props.dispatch(setTasks(tasks))
+        return null
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render () {
     return (
       <div>
-        <h1>Add New Task</h1>
+        <h1>New Task</h1>
         <input name="name" onChange={this.handleChange} />
-        <button onClick={this.submit}>Create Task</button>
+        <button onClick={this.submit}>Add New Task</button>
       </div>
     )
   }
 }
 
-export default AddTask
+export default connect()(AddTask)
