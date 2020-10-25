@@ -7,10 +7,3 @@ export function setTasks (tasks) {
     tasks
   })
 }
-
-export function addTasks (task) {
-  return ({
-    type: ADD_TASKS,
-    task
-  })
-}
