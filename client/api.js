@@ -6,9 +6,9 @@ export function fetchTasks () {
     .then(res => res.body)
 }
 
-export function addTask (taskName) {
+export function addTask (name) {
   return request
     .post('/api/v1/tasks')
-    .send({ taskName })
+    .send({ name })
     .then(res => res.body.id)
 }
