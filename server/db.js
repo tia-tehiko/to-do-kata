@@ -12,7 +12,14 @@ function saveTask ({ name }, db = connection) {
     .insert({ name })
 }
 
+function deleteTask (id, db = connection) {
+  return db('tasks')
+    .where('id', id)
+    .del()
+}
+
 module.exports = {
   getTasks,
-  saveTask
+  saveTask,
+  deleteTask
 }

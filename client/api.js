@@ -12,3 +12,9 @@ export function addTask (name) {
     .send({ name })
     .then(res => res.body.id)
 }
+
+export function deleteTask (id) {
+  return request
+    .delete('/api/v1/tasks/' + id)
+    .then(res => res.body)
+}
