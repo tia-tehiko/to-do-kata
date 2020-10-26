@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { fetchTasks } from '../api'
 import { setTasks } from '../actions'
+
+import { Task } from './Task'
 
 class Tasks extends React.Component {
   componentDidMount () {
@@ -20,7 +23,7 @@ class Tasks extends React.Component {
       <>
         <h1>Tasks</h1>
         <ul>
-          {tasks.map(task => <li key={task.id}>{task.name}</li>)}
+          {tasks.map(task => <Task key={task.id} task={task} />)}
         </ul>
       </>
     )
