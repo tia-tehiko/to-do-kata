@@ -30,8 +30,6 @@ test('save task', () => {
     })
 })
 
-
-
 describe('delete', () => {
   test('deletes a task', () => {
     expect.assertions(2)
@@ -41,19 +39,7 @@ describe('delete', () => {
         return getTasks(db)
       })
       .then(tasks => {
-        expect(tasks.length).toBe(2)
-        return null
-      })
-  })
-  test('id of undefined doesnt break anything', () => {
-    expect.assertions(2)
-    return deleteTask(undefined, db)
-      .catch(errorMessage => {
-        expect(errorMessage).toBe('id must be specified')
-        return getTasks(db)
-      })
-      .then(tasks => {
-        expect(tasks.length).toBe(3)
+        expect(tasks).toHaveLength(2)
         return null
       })
   })
